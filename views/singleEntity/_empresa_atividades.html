@@ -1,0 +1,9 @@
+<div class="form-group col-sm-6">
+    <label>Atividade Principal</label>
+    <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="primaryActivityModal()" ng-model="display.entity.actiEcoPrincipal">
+    <input type="hidden" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.actiEcoPrincipal">
+</div>
+
+<h3 class="page-header col-sm-12"><small class="text-info"><b>Atividades Secundárias</b></small></h3>
+
+<add-to-table models="entity.cae" add-fn="secondaryActivityModal()" labels="labels.economicActivities"></add-to-table>

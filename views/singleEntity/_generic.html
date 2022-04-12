@@ -1,0 +1,103 @@
+<div class="form-group col-sm-6">
+    <label>Origem do Doc. Mais Recente</label>
+    <input type="text" class="form-control" placeholder="" ng-focus="originDocModal()" ng-model="display.entity.origemDoc">
+    <input type="hidden" placeholder="" ng-model="entity.origemDoc">
+</div>
+<div class="form-group col-sm-6">
+    <label>Data do Doc. Mais Recente</label>
+    <input type="text" class="datepicker form-control" placeholder="yyyy-mm-dd" ng-model="display.entity.dataDocumento"
+           ng-change="entity.dataDocumento = $parent.date(display.entity.dataDocumento, 'yyyy-mm-dd')">
+</div>
+<div class="form-group col-sm-6">
+    <label>Canal de Recepção</label>
+    <select class="form-control" ng-model="entity.canal">
+        <option ng-value="{{v.id}}" ng-repeat="v in receptionChannel">{{v.canal}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-6">
+    <label>Número do Contribuinte</label>
+    <input type="text" name="odo" class="form-control" placeholder="" ng-model="entity.nif" ng-minlength="3" ng-maxlength="4" ng-required="$parent.appContext!='uni'">
+<!--    <div class="help-block" ng-messages="entityForm.odo.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>-->
+</div>
+<div class="form-group col-sm-6">
+    <label>Nome</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.nome">
+</div>
+<div class="form-group col-sm-6">
+    <label>Abreviatura</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.abreviatura">
+</div>
+<div class="form-group col-sm-6">
+    <label>Estado</label>
+    <select class="form-control" ng-model="entity.estado">
+        <option value="1">Ativo</option>
+        <option value="0">Inativo</option>
+    </select>
+</div>
+
+<h3 class="page-header col-sm-12"><small class="text-info"><b>Morada e Contacto</b></small></h3>
+
+<div class="form-group col-sm-6">
+    <label>Endereço de Email</label>
+    <input type="email" class="form-control" placeholder="" ng-model="entity.contacto.email">
+</div>
+<div class="form-group col-sm-6">
+    <label>Morada</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.morada">
+</div>
+<div class="form-group col-sm-4">
+    <label>Porta</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.porta">
+</div>
+<div class="form-group col-sm-4">
+    <label>Código Postal</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.codPostal">
+</div>
+<div class="form-group col-sm-4">
+    <label>País</label>
+    <select class="form-control" ng-model="entity.contacto.pais" ng-change="getProvinces(entity.contacto.pais, 'entityForm')">
+        <option ng-value="{{v.id}}" ng-repeat="v in countries">{{v.pais}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-4">
+    <label>Província</label>
+    <select class="form-control" ng-model="entity.contacto.provincia" ng-change="getCounties(entity.contacto.provincia, 'entityForm')">
+        <option ng-value="{{v.id}}" ng-repeat="v in provinces.entityForm">{{v.designacao}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-4">
+    <label>Município</label>
+    <select class="form-control" ng-model="entity.contacto.municipio" ng-change="getCommunes(entity.contacto.municipio, 'entityForm')">
+        <option ng-value="{{v.id}}" ng-repeat="v in counties.entityForm">{{v.designacao}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-4">
+    <label>Comuna</label>
+    <select class="form-control" ng-model="entity.contacto.comuna">
+        <option ng-value="{{v.id}}" ng-repeat="v in communes.entityForm">{{v.designacao}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-6">
+    <label>Pessoa de Contacto</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.pessoa">
+</div>
+<div class="form-group col-sm-6">
+    <label>Tipo de Funcionario</label>
+    <select class="form-control" ng-model="entity.tipo">
+        <option ng-value="{{v.id}}" ng-repeat="v in employeeType">{{v.tipo}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-4">
+    <label>Telefone</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.telefone">
+</div>
+<div class="form-group col-sm-4">
+    <label>Telemóvel</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.telemovel">
+</div>
+<div class="form-group col-sm-4">
+    <label>Fax</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.contacto.fax">
+</div>

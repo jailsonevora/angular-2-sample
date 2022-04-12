@@ -1,0 +1,183 @@
+
+<ul class="nav nav-tabs navtab-bg">
+    <li class="active"><a href="!#estab-geral" data-toggle="tab" aria-expanded="true">Geral</a></li>
+    <li class=""><a href="!#ativ-empr" data-toggle="tab" aria-expanded="false">Atividade da Empresa</a></li>
+    <li class=""><a href="!#cb-map" data-toggle="tab" aria-expanded="false">Mapa</a></li>
+</ul>
+<div class="tab-content container">
+    <div class="tab-pane active" id="estab-geral">
+        <div class="form-group col-sm-6 required-{{cbForm.numEstabelecimento.$invalid}}">
+            <label>Número do Estabelecimento</label>
+            <input type="text" name="numEstabelecimento" ng-minlength="4"
+                   class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="commercialBuilding.numEstabelecimento">
+            <div class="help-block" ng-messages="cbForm.numEstabelecimento.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+
+        </div>
+        <div class="form-group col-sm-6 required-{{cbForm.situacaoEmpresa.$invalid}}">
+            <label>Situação</label>
+            <select name="situacaoEmpresa" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="commercialBuilding.situacaoEmpresa">
+                <option ng-value="{{v.id}}" ng-repeat="v in companyCondition">{{v.designacao}}</option>
+            </select>
+            <div class="help-block" ng-messages="cbForm.situacaoEmpresa.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-6 required-{{cbForm.volumeVendas.$invalid}}">
+            <label>Volume de Vendas</label>
+            <input name="volumeVendas" type="number" class="form-control" ng-maxlength="14" ng-model="commercialBuilding.volumeVendas">
+            <div class="help-block" ng-messages="cbForm.volumeVendas.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-6 required-{{cbForm.data_constituicao.$invalid}}">
+            <label>Data de Constituição</label>
+            <input name="data_constituicao" type="text" class="datepicker form-control" placeholder="yyyy-mm-dd" ng-model="display.commercialBuilding.data_constituicao"
+                   ng-change="commercialBuilding.data_constituicao = $parent.date(display.commercialBuilding.data_constituicao, 'yyyy-mm-dd')">
+            <div class="help-block" ng-messages="cbForm.data_constituicao.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-6">
+            <label>Sede</label>
+            <input type="checkbox" class="" placeholder="" ng-model="commercialBuilding.sede">
+        </div>
+
+        <div class="col-sm-12">
+            <h3 class="page-header col-sm-12"><small class="text-info"><b>Nº de Pessoas ao Serviço</b></small></h3>
+
+            <div class="form-group col-sm-4 required-{{cbForm.numFunc.$invalid}}">
+                <label>Total</label>
+                <input name="numFunc" type="number" class="form-control" ng-required="$parent.appContext!='uni'" disabled ng-maxlength="5" ng-model="commercialBuilding.numFunc">
+                <div class="help-block" ng-messages="cbForm.numFunc.$error">
+                    <div ng-messages-include="views/layout/messages.html"></div>
+                </div>
+            </div>
+            <div class="form-group col-sm-4 required-{{cbForm.numFuncHomem.$invalid}}">
+                <label>Homens</label>
+                <input name="numFuncHomem" type="number" class="form-control" ng-required="$parent.appContext!='uni'" ng-maxlength="5" ng-model="commercialBuilding.numFuncHomem">
+                <div class="help-block" ng-messages="cbForm.numFuncHomem.$error">
+                    <div ng-messages-include="views/layout/messages.html"></div>
+                </div>
+            </div>
+            <div class="form-group col-sm-4 required-{{cbForm.numFuncMulher.$invalid}}">
+                <label>Mulheres</label>
+                <input name="numFuncMulher" type="number" class="form-control" ng-required="$parent.appContext!='uni'" ng-maxlength="5" ng-model="commercialBuilding.numFuncMulher">
+                <div class="help-block" ng-messages="cbForm.numFuncMulher.$error">
+                    <div ng-messages-include="views/layout/messages.html"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="page-header col-sm-12"><small class="text-info"><b>Morada e Contacto</b></small></h3>
+
+        <div class="form-group col-sm-6 required-{{cbForm.email.$invalid}}">
+            <label>Endereço de Email</label>
+            <input name="email" type="email" class="form-control" ng-maxlength="60" placeholder="" ng-model="commercialBuilding.contacto.email">
+            <div class="help-block" ng-messages="cbForm.email.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-6 required-{{cbForm.morada.$invalid}}">
+            <label>Morada</label>
+            <input name="morada" type="text" class="form-control" placeholder="" ng-model="commercialBuilding.contacto.morada">
+            <div class="help-block" ng-messages="cbForm.morada.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.porta.$invalid}}">
+            <label>Porta</label>
+            <input name="porta" type="text" class="form-control" placeholder="" ng-model="commercialBuilding.contacto.porta">
+            <div class="help-block" ng-messages="cbForm.porta.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.codPostal.$invalid}}">
+            <label>Código Postal</label>
+            <input name="codPostal" type="text" class="form-control" placeholder="" ng-model="commercialBuilding.contacto.codPostal">
+            <div class="help-block" ng-messages="cbForm.codPostal.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.pais.$invalid}}">
+            <label>País</label>
+            <select name="pais" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="commercialBuilding.contacto.pais" ng-change="getProvinces(commercialBuilding.contacto.pais, 'commercialBuildingForm')">
+                <option ng-value="{{v.id}}" ng-repeat="v in countries">{{v.pais}}</option>
+            </select>
+            <div class="help-block" ng-messages="cbForm.pais.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.provincia.$invalid}}">
+            <label>Província</label>
+            <select name="provincia" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="commercialBuilding.contacto.provincia" ng-change="getCounties(commercialBuilding.contacto.provincia, 'commercialBuildingForm')">
+                <option ng-value="{{v.id}}" ng-repeat="v in provinces.commercialBuildingForm">{{v.designacao}}</option>
+            </select>
+            <div class="help-block" ng-messages="cbForm.provincia.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.municipio.$invalid}}">
+            <label>Município</label>
+            <select name="municipio" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="commercialBuilding.contacto.municipio" ng-change="getCommunes(commercialBuilding.contacto.municipio, 'commercialBuildingForm')">
+                <option ng-value="{{v.id}}" ng-repeat="v in counties.commercialBuildingForm">{{v.designacao}}</option>
+            </select>
+            <div class="help-block" ng-messages="cbForm.municipio.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.comuna.$invalid}}">
+            <label>Comuna</label>
+            <select name="comuna" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="commercialBuilding.contacto.comuna">
+                <option ng-value="{{v.id}}" ng-repeat="v in communes.commercialBuildingForm">{{v.designacao}}</option>
+            </select>
+            <div class="help-block" ng-messages="cbForm.comuna.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.telefone.$invalid}}">
+            <label>Telefone</label>
+            <input name="telefone" type="text" class="form-control" ng-required="$parent.appContext!='uni'" ng-minlength="9" ng-maxlength="40" placeholder="" ng-model="commercialBuilding.contacto.telefone">
+            <div class="help-block" ng-messages="cbForm.telefone.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.telemovel.$invalid}}">
+            <label>Telemóvel</label>
+            <input name="telemovel" type="text" class="form-control" placeholder="" ng-model="commercialBuilding.contacto.telemovel">
+            <div class="help-block" ng-messages="cbForm.telemovel.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group col-sm-4 required-{{cbForm.fax.$invalid}}">
+            <label>Fax</label>
+            <input name="fax" type="text" class="form-control" ng-minlength="3" ng-maxlength="40" ng-model="commercialBuilding.contacto.fax">
+            <div class="help-block" ng-messages="cbForm.fax.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="ativ-empr">
+        <div class="form-group col-sm-6 required-{{cbForm.actiEcoPrincipal.$invalid}}">
+            <label>Atividade Principal</label>
+            <input name="actiEcoPrincipal" type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="primaryActivityModal('commercialBuildingForm')" ng-model="display.commercialBuilding.actiEcoPrincipal">
+            <div class="help-block" ng-messages="cbForm.actiEcoPrincipal.$error">
+                <div ng-messages-include="views/layout/messages.html"></div>
+            </div>
+        </div>
+
+        <h3 class="page-header col-sm-12"><small class="text-info"><b>Atividades Secundárias</b></small></h3>
+
+        <add-to-table models="commercialBuilding.cae" add-fn="secondaryActivityModal('commercialBuildingForm')" labels="labels.economicActivities"></add-to-table>
+    </div>
+
+    <div class="tab-pane" id="cb-map">
+        <ng-map center="[40.74, -74.18]"></ng-map>
+    </div>
+</div>
+
+<button class="btn btn-primary" type="button"
+        ng-click="addCommercialBuilding()" ng-if="!addToTable.state.edit">Adicionar</button>
+<!--<button class="btn btn-primary" type="button"
+        ng-click="saveCommercialBuilding()" ng-if="addToTable.state.edit">Aplicar</button>-->

@@ -1,0 +1,31 @@
+<div id="detail-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="mySmallModalLabel">Ver</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="tab-content container">
+                    <div class="tab-pane active" id="geral">
+                      <div class="form-group col-sm-6">
+                          <label>Origem</label>
+                          {{originDoc.origem}}
+                      </div>
+                      <div class="form-group col-sm-6">
+                          <label>Designação</label>
+                          {{originDoc.origemDsg}}
+                      </div>
+                      <div class="form-group col-sm-6">
+                          <label>Estado</label>
+                          {{originDoc.estado}}
+                      </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

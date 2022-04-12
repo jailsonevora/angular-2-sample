@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+
+                <form>
+                    
+                    <!--<h3 class="page-header col-sm-12"><small class="text-info"><b>Intervalo de Anos</b></small></h3>-->
+
+                    <div class="form-group col-sm-6">
+                        <label>Início</label>
+                        <input type="text" class="datepicker form-control" placeholder="yyyy-mm-dd" ng-model="display.indicator.dataDocumento"
+                               ng-change="indicator.dataDocumento = $parent.date(display.indicator.dataDocumento, 'yyyy-mm-dd')">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Fim</label>
+                        <input type="text" class="datepicker form-control" placeholder="yyyy-mm-dd" ng-model="display.indicator.dataDocumento"
+                               ng-change="indicator.dataDocumento = $parent.date(display.indicator.dataDocumento, 'yyyy-mm-dd')">
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-success btn-form" ng-click="">Pesquisar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

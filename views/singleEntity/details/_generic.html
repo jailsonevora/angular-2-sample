@@ -1,0 +1,83 @@
+<div class="form-group col-sm-6">
+    <label>Origem do Doc. Mais Recente</label>
+    {{display.entity.origemDoc}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Data do Doc. Mais Recente</label>
+    {{entity.dataDocumento | date}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Canal de Recepção</label>
+    {{display.entity.canal}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Número do Contribuinte</label>
+    {{entity.num_rge}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Nome</label>
+    {{entity.nome}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Abreviatura</label>
+    {{entity.abreviatura}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Estado</label>
+    {{entity.estado}}
+</div>
+
+<h3 class="page-header col-sm-12"><small class="text-info"><b>Morada e Contacto</b></small></h3>
+
+<div class="form-group col-sm-6">
+    <label>Endereço de Email</label>
+    {{entity.contacto.email}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Morada</label>
+    {{entity.contacto.morada}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Porta</label>
+    {{entity.contacto.porta}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Código Postal</label>
+    {{entity.contacto.codPostal}}
+</div>
+<div class="form-group col-sm-4">
+    <label>País</label>
+    {{display.entity.contacto.pais}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Província</label>
+    {{entity.contacto.provincia}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Município</label>
+    {{entity.contacto.municipio}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Comuna</label>
+    {{entity.contacto.comuna}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Pessoa de Contacto</label>
+    {{entity.pessoa}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Tipo de Funcionario</label>
+    {{display.entity.tipo}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Telefone</label>
+    {{entity.contacto.telefone}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Telemóvel</label>
+    {{entity.contacto.telemovel}}
+</div>
+<div class="form-group col-sm-4">
+    <label>Fax</label>
+    {{entity.contacto.fax}}
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <ul class="nav nav-tabs navtab-bg">
+                    <li class="active"><a href="!#generic" data-toggle="tab" aria-expanded="true">Geral</a></li>
+                    <li class=""><a href="!#personal" data-toggle="tab" aria-expanded="false">Particular</a></li>
+<!--                    <li class=""><a href="!#temas" data-toggle="tab" aria-expanded="false">Lista de Temas</a></li>
+                    <li class=""><a href="!#mensagens" data-toggle="tab" aria-expanded="false">Mensagens</a></li>
+                    <li class=""><a href="!#historicos" data-toggle="tab" aria-expanded="false">Lista de Históricos</a></li>
+                    <li class=""><a href="!#versoes" data-toggle="tab" aria-expanded="false">Versões</a></li>-->
+                </ul>
+                <form name="entityForm">
+                    <div class="tab-content container">
+                        <div class="tab-pane active" id="generic">
+                            <div ng-include src="'views/singleEntity/_generic.html'"></div>
+                        </div>
+                        <div class="tab-pane" id="personal">
+                            <div ng-include src="'views/singleEntity/_personal.html'"></div>
+                        </div>
+<!--                        <div class="tab-pane" id="temas">
+                            <div ng-include src="'views/singleEntity/_lista-de-temas.html'"></div>
+                        </div>
+                        <div class="tab-pane" id="mensagens">
+                            <div ng-include src="'views/singleEntity/_mensagens.html'"></div>
+                        </div>
+                        <div class="tab-pane" id="historicos">
+                            <div ng-include src="'views/singleEntity/_lista-de-historicos.html'"></div>
+                        </div>
+                        <div class="tab-pane" id="versoes">
+                            <div ng-include src="'views/singleEntity/_versoes.html'"></div>
+                        </div>-->
+                    </div>
+                    <button type="button" class="btn btn-success btn-form" ng-click="create(page)">Criar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

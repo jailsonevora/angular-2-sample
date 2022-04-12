@@ -1,0 +1,18 @@
+<add-to-table models="entity.estabelecimento" add-fn="commercialBuildingFormModal()" labels="labels.commercialBuilding"></add-to-table>
+
+<div id="commercial-building-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lista</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div ng-include src="'views/commercialBuilding/_create.html'"></div>
+
+                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

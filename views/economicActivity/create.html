@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+
+                <form novalidate name="someform">
+                    <div class="form-group col-sm-6">
+                        <label>CAE</label>
+                        <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="economicActivity.cae" >
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Classe</label>
+                        <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="economicActivity.className">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Designação</label>
+                        <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="economicActivity.designacao">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Estado</label>
+                        <select class="form-control" ng-required="$parent.appContext!='uni'" ng-model="economicActivity.estado">
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-success btn-form" ng-click="create(page)">
+                            {{page=='edit'?'Guardar':'Criar'}}
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

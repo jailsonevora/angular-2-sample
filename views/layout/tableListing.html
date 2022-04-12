@@ -1,0 +1,375 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+
+                <div class="top-menu row">
+                    <div class="col-sm-7">
+                        <button class="btn btn-primary waves-effect waves-light" ng-if="buttonsFn.create"
+                                ng-click="buttonsFn.create()">
+                            <i class="ion-plus-round"></i> Novo
+                        </button>
+                        <button class="btn btn-danger waves-effect waves-light" ng-if="buttonsFn.remove"
+                                ng-click="buttonsFn.remove()">
+                            <i class="ion-trash-a"></i> Remover
+                        </button>
+                        <table-export labels="labels" structure="structure" models="models"></table-export>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ion-android-more"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href data-toggle="modal" data-target=".tb-column-filter">
+                                        Esconder/Mostrar Colunas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-sm-9 search-el">
+                            <div class="form-group col-sm-10">
+                                <input class="form-control" ng-required="$parent.appContext!='uni'" placeholder="Pesquisar" ng-model="singleSearch.value">
+                            </div>
+                            <button class="btn btn-default" ng-click="singleSearch.submit()">
+                                <i class="ion-search"></i>
+                            </button>
+                        </div>
+
+                        <button class="btn btn-default" data-toggle="collapse" data-target="#advanced-search"><i class="ion-funnel"></i></button>
+                    </div>
+
+                </div>
+
+                <div id="advanced-search" class="collapse col-sm-12 well search-filters">
+
+                    <div class="col-sm-12">
+                        <h3 class="page-header"><small class="text-info"><b>Pesquisa Avançada</b></small></h3>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="searchFilters.scheme.selectFields != null">
+                        <h3 class="page-header"><small class="text-info"><b>Campos de Seleção</b></small></h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-12">Escolher campo</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" ng-model="selectField" ng-init="selectField = ''">
+                                        <option value="{{k}}" ng-repeat="(k,v) in searchFilters.scheme.selectFields">{{labels[k][0]}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-5">
+                                    <select class="form-control" ng-model="selectFieldVal" ng-init="selectFieldVal = null"
+                                            ng-change="selectFieldValName = searchFilters.scheme.selectFields[selectField][selectFieldVal]">
+                                        <option value="{{k}}" ng-repeat="(k,v) in searchFilters.scheme.selectFields[selectField]">{{v}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary waves-effect waves-light"
+                                            ng-disabled="selectField == null || selectFieldVal == null"
+                                            ng-click="searchFilters.values.selectFields[selectField] = {val: selectFieldVal, valName: selectFieldValName}">
+                                        <i class="ion-plus-round"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table" ng-if="!utilsFn.equals(searchFilters.values.selectFields,  {})">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(k,v) in searchFilters.values.selectFields" ng-if="v != null">
+                                        <td>{{labels[k][0]}}</td>
+                                        <td>{{v.valName}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger waves-effect waves-light"
+                                                    ng-click="searchFilters.values.selectFields[k] = undefined">
+                                                <i class="ion-minus-round"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="searchFilters.scheme.numericFields != null">
+                        <h3 class="page-header"><small class="text-info"><b>Campos Numéricos</b></small></h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-12">Escolher campo</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" ng-model="numericField">
+                                        <option value="{{v}}" ng-repeat="(k,v) in searchFilters.scheme.numericFields">{{labels[v][0]}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-4" style="padding-left:0">
+                                        <input min="0" type="number" class="form-control" ng-model="numericFieldMore" placeholder=">"
+                                               ng-disabled="numericFieldEqual != null">
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left:0">
+                                        <input min="0" type="number" class="form-control" ng-model="numericFieldLess" placeholder="<"
+                                               ng-disabled="numericFieldEqual != null">
+                                    </div>
+                                    <div class="col-sm-4" style="padding-left:0">
+                                        <input min="0" type="number" class="form-control" ng-model="numericFieldEqual" placeholder="="
+                                               ng-disabled="numericFieldMore != null || numericFieldLess != null">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary waves-effect waves-light"
+                                            ng-disabled="numericField == null || (numericFieldEqual == null && numericFieldMore == null && numericFieldLess == null)"
+                                            ng-click="searchFilters.values.numericFields[numericField] = {more: numericFieldMore, less: numericFieldLess, equal: numericFieldEqual}">
+                                        <i class="ion-plus-round"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table" ng-if="!utilsFn.equals(searchFilters.values.numericFields,  {})">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Maior que</th>
+                                        <th>Menor que</th>
+                                        <th>Igual</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(k,v) in searchFilters.values.numericFields" ng-if="v != null">
+                                        <td>{{labels[k][0]}}</td>
+                                        <td>{{v.more}}</td>
+                                        <td>{{v.less}}</td>
+                                        <td>{{v.equal}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger waves-effect waves-light"
+                                                    ng-click="searchFilters.values.numericFields[k] = undefined">
+                                                <i class="ion-minus-round"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6" ng-if="searchFilters.scheme.referenceFields != null || searchFilters.scheme.referenceFieldsBig != null">
+                        <h3 class="page-header"><small class="text-info"><b>Campos com Referência</b></small></h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-12">Escolher campo</label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" ng-model="referenceField">
+                                        <option value="{{k}}" ng-repeat="(k,v) in searchFilters.scheme.referenceFields">{{labelsModels[k]}}</option>
+                                        <option value="{{k}}" ng-repeat="(k,v) in searchFilters.scheme.referenceFieldsBig">{{labelsModels[k]}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-5" ng-show="searchFilters.scheme.referenceFields[referenceField] != null">
+                                    <select class="form-control" ng-model="referenceFieldId"
+                                            ng-change="referenceFieldName = searchFilters.scheme.referenceFields[referenceField][referenceFieldId].name">
+                                        <option ng-value="{{k}}" ng-repeat="(k,v) in searchFilters.scheme.referenceFields[referenceField]">
+                                            {{v.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary waves-effect waves-light" ng-if="referenceFieldId != null"
+                                            ng-disabled="referenceFieldId == null"
+                                            ng-click="searchFilters.values.referenceFields[referenceField] = {id: referenceFieldId, name: referenceFieldName}">
+                                        <i class="ion-plus-round"></i>
+                                    </button>
+                                    <button class="btn btn-primary waves-effect waves-light" ng-if="referenceFieldId == null"
+                                            ng-disabled="referenceField == null"
+                                            ng-click="searchFilters.fn.referenceBigModal(referenceField)">
+                                        <i class="ion-plus-round"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table"
+                                   ng-if="!utilsFn.equals(searchFilters.values.referenceFields,   {})
+                                                   ||   !utilsFn.equals(searchFilters.values.referenceFieldsBig,  {})">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Valor</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(k,v) in searchFilters.values.referenceFields" ng-if="v != null">
+                                        <td>{{labelsModels[k]}}</td>
+                                        <td>{{searchFilters.values.referenceFields[k].name}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger waves-effect waves-light"
+                                                    ng-click="searchFilters.values.referenceFields[k] = undefined">
+                                                <i class="ion-minus-round"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="(k,v) in searchFilters.values.referenceFieldsBig" ng-if="v != null">
+                                        <td>{{labelsModels[k]}}</td>
+                                        <td>{{searchFilters.values.referenceFieldsBig[k].name}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger waves-effect waves-light"
+                                                    ng-click="searchFilters.values.referenceFieldsBig[k] = undefined">
+                                                <i class="ion-minus-round"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6" ng-if="searchFilters.scheme.dateFields != null">
+                        <h3 class="page-header"><small class="text-info"><b>Campos Temporais</b></small></h3>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-12">Escolher campo</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" ng-model="dateField">
+                                        <option value="{{v}}" ng-repeat="(k,v) in searchFilters.scheme.dateFields">{{v}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="col-sm-6" style="padding-left:0">
+                                        <input class="datepicker form-control" type="text" ng-model="dateFieldMin" placeholder="Data inicial">
+                                    </div>
+                                    <div class="col-sm-6" style="padding-left:0">
+                                        <input type="text" class="datepicker form-control" ng-model="dateFieldMax" placeholder="Data final">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary waves-effect waves-light"
+                                            ng-disabled="dateField == null"
+                                            ng-click="searchFilters.values.dateFields[dateField] = {min: dateFieldMin, max: dateFieldMax}">
+                                        <i class="ion-plus-round"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!--{{searchFilters.values.dateFields}}-->
+                            <table class="table" ng-if="!utilsFn.equals(searchFilters.values.dateFields,  {})">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Data incicial</th>
+                                        <th>Data final</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(k,v) in searchFilters.values.dateFields" ng-if="v != null">
+                                        <td>{{k}}</td>
+                                        <td>{{v.min}}</td>
+                                        <td>{{v.max}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-danger waves-effect waves-light"
+                                                    ng-click="searchFilters.values.dateFields[k] = undefined">
+                                                <i class="ion-minus-round"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12" style="margin-top:50px">
+                        <button class="btn btn-success" ng-click="searchFilters.submit()">Pesquisar</button>
+                    </div>
+                </div>
+                                
+                <table class="table table-striped table-bordered nowrap no-footer">
+                    <thead>
+                        <tr ng-init="ascToggle=null">
+                            <th ng-if="bulkSelect!=null"><input type="checkbox" ng-model="bulkSelect.all"></th>
+                            <th ng-repeat="(k, m) in structure"
+                                ng-if="labels[k] != null && labels[k][2] == 'show'"
+                                ng-click="searchFilters.fn.sort(k, !ascToggle); ascToggle = !ascToggle">
+                                {{labels[k][0]}} <i class="fa fa-sort{{ascToggle?'-amount-asc':'-amount-desc'}} pull-right"
+                                                    ng-if="searchFilters.query.sort.split(',')[0]==k"></i>
+                                                <i class="fa fa-sort pull-right"
+                                                    ng-if="searchFilters.query.sort.split(',')[0]!=k"></i>
+                            </th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="n in models">    
+                            <td ng-if="n!=null && bulkSelect!=null">
+                                <input type="checkbox" ng-checked="bulkSelect.all" ng-model="bulkSelect.items[$index]" ng-init="bulkSelect.items[$index]=false">
+                            </td>
+                            <td ng-repeat="(k,v) in n" ng-if="labels[k][2] == 'show' && labels[k] != null">
+                                {{v}}
+                            </td>
+                            <td class="action-icons">
+                                <button class="btn btn-sm btn-default" ng-click="actionsFn.view($index)" ng-if="actionsFn.view">
+                                    <i class="mdi mdi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-default" ng-click="actionsFn.edit($index)" ng-if="actionsFn.edit">
+                                    <i class="ion-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-default" ng-click="actionsFn.remove($index)" ng-if="actionsFn.remove">
+                                    <i class="ion-trash-a"></i>
+                                </button>
+                                <span ng-repeat="(k,v) in actionsFn.custom">
+                                    <button class="btn btn-sm btn-default" ng-click="v.fn($parent.$index)">
+                                        <i class="{{v.i}}"></i>
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="col-sm-6 row" ng-if="pagination.totalElements"><div>Total de registos: {{pagination.totalElements}}</div></div>
+                <div class="pull-right" ng-if="pagination.totalPages>1">
+                    <ul class="pagination">
+                        <li ng-class="pagination.first?'disabled':''">
+                            <a href ng-click="pagination.page(pagination.number-1)">Anterior</a>
+                        </li>
+                        <li ng-class="pagination.number+1==i?'active':''" ng-repeat="i in utilsFn.range(1, pagination.totalPages)">
+                            <a href ng-click="pagination.page(i-1)">{{i}}</a>
+                        </li>
+                        <li ng-class="pagination.last?'disabled':''">
+                            <a href ng-click="pagination.page(pagination.number+1)">Próximo</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade tb-column-filter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="mySmallModalLabel">Esconder colunas</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered nowrap no-footer">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" ng-model="allRecFilter"></th>
+                            <th>Coluna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(k,n) in structure" ng-if="labels[k] != null">
+                            <td><input type="checkbox" ng-checked="labels[k][2] == 'show'"
+                                       ng-click="labels[k][2] == 'show' ? labels[k][2] = '' : labels[k][2] = 'show'; utilsFn.session.saveLabels($parent.$parent.$parent.labels)"></td>
+                            <td>{{labels[k][0]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

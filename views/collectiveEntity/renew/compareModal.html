@@ -1,0 +1,26 @@
+<div id="compare-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="mySmallModalLabel">Confirmar Alterações</h4>
+            </div>
+            <div class="modal-body row">
+
+                <div class="well text-center">
+                    <button class="btn btn-cancel waves-effect waves-light" data-dismiss="modal">
+                        <i class="ion-close-round"></i> Cancelar
+                    </button>
+                    <button class="btn btn-primary waves-effect waves-light" ng-click="renewEntity()">
+                        <i class="ion-checkmark-round"></i> Confirmar
+                    </button>
+                </div>
+                <compare template-url="views/collectiveEntity/create.html"
+                    entity="entityOld" display="displayOld" class="col-sm-6 left"></compare>
+                <compare template-url="views/collectiveEntity/create.html"
+                    entity="entity" display="display" class="col-sm-6 right"></compare>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

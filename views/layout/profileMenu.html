@@ -1,0 +1,21 @@
+<div class="profile-menu hide col-sm-6">
+    <h4 class="page-header">
+        Modificar Perfil
+        <i class="ti-close pull-right"></i>
+    </h4>
+    <div ng-repeat="(k, n) in profiles" class="profile-wrapper">
+        <a href class="{{(k==profileSelected)?'selected':''}} col-sm-12" ng-click="setProfileSelected(k, null, n)"
+           ng-if="!generic.utils.isObject(n)">
+            {{n}}
+        </a>
+
+        <div class="col-sm-6 row" ng-if="generic.utils.isObject(n)" ng-repeat="(kk, vv) in n track by $index">
+            <h5 class="page-header">{{kk | translate}}</h5>
+            <ul>
+                <li ng-repeat="(kk2, vv2) in vv">
+                    <a href="#" ng-click="setProfileSelected(k, $index, kk)">{{vv2}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

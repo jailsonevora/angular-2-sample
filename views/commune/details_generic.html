@@ -1,0 +1,36 @@
+<div class="form-group col-sm-6">
+    <label>Código</label>
+    {{commune.codigo}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Designação</label>
+    {{commune.designacao}}
+</div>
+<div class="form-group col-sm-6">
+    <label>País</label>
+    {{commune.municipio.provincia.pais.pais}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Província</label>
+    {{commune.municipio.provincia.designacao}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Município</label>
+    {{commune.municipio.designacao}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Sigla</label>
+    {{commune.municipio.provincia.sigla}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Estado</label>
+    {{commune.estado}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Data de criação</label>
+    {{commune.createdAt}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Última actualização</label>
+    {{commune.updatedAt}}
+</div>

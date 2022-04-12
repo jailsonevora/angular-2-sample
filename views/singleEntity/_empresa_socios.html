@@ -1,0 +1,18 @@
+<add-to-table models="entity.socio" add-fn="businessPartnerFormModal()" labels="labels.businessPartner"></add-to-table>
+
+<div id="business-partner-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lista</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div ng-include src="'views/businessPartner/_create.html'"></div>
+
+                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

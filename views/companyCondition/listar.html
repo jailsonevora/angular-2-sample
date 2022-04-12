@@ -1,0 +1,15 @@
+<table-listing
+    models="companyConditions"
+    labels="labels.companyConditions"
+    labels-models="labels.labels"
+    actions-fn="actions"
+    buttons-fn="buttons"
+    bulk-delete="bulkDelete(bulkSelect)"
+    bulk-select="bulkSelect"
+    search-filters="searchFilters"
+    utils-fn="$parent.generic.utils"
+    single-search="singleSearch"
+    structure="structures.companyCondition"
+    pagination="pagination"></table-listing>
+
+<div ng-include src="'views/companyCondition/details.html'"></div>

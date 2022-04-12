@@ -1,0 +1,15 @@
+<div class="form-group col-sm-6 required-{{entityForm.actiEcoPrincipal.$invalid}}">
+    <label>Atividade Principal</label>
+    <input name="actiEcoPrincipal" type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="primaryActivityModal()" ng-model="display.entity.actiEcoPrincipal">
+    <div class="help-block" ng-messages="entityForm.actiEcoPrincipal.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+
+<h3 class="page-header col-sm-12"><small class="text-info"><b>Atividades Secundárias</b></small></h3>
+
+<add-to-table
+    models="entity.cae"
+    add-fn="secondaryActivityModal()"
+    labels="labels.economicActivities"
+    actions-fn="addToTable.actions"></add-to-table>

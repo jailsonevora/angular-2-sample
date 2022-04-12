@@ -1,0 +1,99 @@
+<div class="form-group col-sm-6">
+    <label>Setor de Atividade Económica</label>
+    {{display.entity.sector}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Situação</label>
+    {{display.entity.situacaoEmpresa}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Data de Constituição</label>
+    {{entity.dataCostituicao | date}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Volume de Vendas</label>
+    {{entity.volume_vendas}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Atividade Comercial</label>
+    {{display.entity.actiComercial}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Contabilidade Empresa</label>
+    {{display.entity.contabilidade}}
+</div>
+<div class="form-group col-sm-6">
+    <label>Forma Jurídica</label>
+    {{display.entity.formaJuridica}}
+</div>
+
+<div class="form-group col-sm-3">
+    <label>Nº de Estabelecimentos</label>
+    {{entity.numEstabelecimentos}}
+</div>
+<div class="form-group col-sm-3">
+    <label>Capital Social</label>
+    {{entity.capitalSocial}}
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Nº de Pessoas ao Serviço</b></small></h3>
+
+    <div class="form-group col-sm-4">
+        <label>Total</label>
+        {{entity.numFuncionario}}
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Homens</label>
+        {{entity.numFuncionarioHomem}}
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Mulheres</label>
+        {{entity.numFuncionarioMulher}}
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Repartição de Capital</b></small></h3>
+
+    <div class="form-group col-sm-4">
+        <label>Público</label>
+        {{entity.capPublico}}
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Privado</label>
+        {{entity.capPrivado}}
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Estrangeiro</label>
+        {{entity.capEstrang}}
+    </div>
+</div>
+
+<div class="tab-inside-tab col-sm-12">
+    <ul class="nav nav-tabs navtab-bg">
+        <li class="active">
+            <a href="!#empresa-atividades" data-toggle="tab" aria-expanded="true"
+               ng-click="$parent.tab.subtab='companyActivities'">Atividades da Empresa</a>
+            </li>
+        <li class="">
+            <a href="!#empresa-estabelecimentos" data-toggle="tab" aria-expanded="false"
+               ng-click="$parent.tab.subtab='commercialBuildings'">Estabelecimentos da Empresa</a>
+        </li>
+        <li class="">
+            <a href="!#empresa-socios" data-toggle="tab" aria-expanded="false"
+               ng-click="$parent.tab.subtab='businessPartners'">Sócios da Empresa</a>
+        </li>
+    </ul>
+    <div class="tab-content container">
+        <div class="tab-pane active" id="empresa-atividades">
+            <div ng-include="'views/collectiveEntity/details/_company_activities.html'"></div>
+        </div>
+        <div class="tab-pane" id="empresa-estabelecimentos">
+            <div ng-include="'views/collectiveEntity/details/_company_buildings.html'"></div>
+        </div>
+        <div class="tab-pane" id="empresa-socios">
+            <div ng-include="'views/collectiveEntity/details/_company_partners.html'"></div>
+        </div>
+    </div>
+</div>

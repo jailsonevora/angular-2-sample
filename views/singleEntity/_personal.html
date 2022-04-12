@@ -1,0 +1,126 @@
+<div class="form-group col-sm-6">
+    <label>Profissão</label>
+    <input type="text" class="form-control" placeholder="" ng-model="entity.profissao">
+</div>
+<div class="form-group col-sm-6">
+    <label>Título Académico</label>
+    <input type="text" class="form-control" placeholder="" ng-focus="academicDegreeModal()" ng-model="display.entity.origemDoc">
+</div>
+<div class="form-group col-sm-6">
+    <label>Género</label>
+    <select class="form-control" ng-model="entity.sexo">
+        <option ng-value="{{v.id}}" ng-repeat="v in gender">{{v.sexo}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-6">
+    <label>Idade</label>
+    <input type="text" name="odo" class="form-control" placeholder="" ng-model="entity.idade" ng-minlength="18" ng-maxlength="100" ng-required="$parent.appContext!='uni'">
+<!--    <div class="help-block" ng-messages="entityForm.odo.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>-->
+</div>
+
+<!------------------>
+
+<h3 class="page-header col-sm-12"><small class="text-info"><b>Informações Comerciais</b></small></h3>
+
+
+<div class="form-group col-sm-6">
+    <label>Setor de Atividade Económica</label>
+    <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="economicSectorModal()" ng-model="display.entity.sector">
+</div>
+<div class="form-group col-sm-6">
+    <label>Situação</label>
+    <select class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.situacaoEmpresa">
+        <option ng-value="{{v.id}}" ng-repeat="v in companyCondition">{{v.designacao}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-6">
+    <label>Data de Constituição</label>
+    <input type="text" class="datepicker form-control" ng-required="$parent.appContext!='uni'" placeholder="yyyy-mm-dd" ng-model="display.entity.data_constituicao"
+           ng-change="entity.data_constituicao = $parent.date(display.entity.data_constituicao, 'yyyy-mm-dd')">
+</div>
+<div class="form-group col-sm-6">
+    <label>Volume de Vendas</label>
+    <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.volume_vendas">
+</div>
+<div class="form-group col-sm-6">
+    <label>Atividade Comercial</label>
+    <input type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="commercialActivityModal()" ng-model="display.entity.actiComercial">
+    <input type="hidden" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.actiComercial">
+</div>
+<div class="form-group col-sm-6">
+    <label>Contabilidade Empresa</label>
+    <select class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.contabilidade">
+        <option ng-value="{{v.id}}" ng-repeat="v in accounting">{{v.cntaDsg}}</option>
+    </select>
+</div>
+<div class="form-group col-sm-6">
+    <label>Forma Jurídica</label>
+    <select class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.formaJuridica">
+        <option ng-value="{{v.id}}" ng-repeat="v in legalForm">{{v.formaJuridica}}</option>
+    </select>
+</div>
+
+<div class="form-group col-sm-3">
+    <label>Nº de Estabelecimentos</label>
+    <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.numEstabelecimentos">
+</div>
+<div class="form-group col-sm-3">
+    <label>Capital Social</label>
+    <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.capitalSocial">
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Nº de Pessoas ao Serviço</b></small></h3>
+
+    <div class="form-group col-sm-4">
+        <label>Total</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.numFuncionario">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Homens</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.numFuncionarioHomem">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Mulheres</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.numFuncionarioMulher">
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Repartição de Capital</b></small></h3>
+
+    <div class="form-group col-sm-4">
+        <label>Público</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.capPublico">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Privado</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.capPrivado">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Estrangeiro</label>
+        <input type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.capEstrang">
+    </div>
+</div>
+
+<div class="tab-inside-tab col-sm-12">
+    <ul class="nav nav-tabs navtab-bg">
+        <li class="active"><a href="!#empresa-atividades" data-toggle="tab" aria-expanded="true">Atividades da Empresa</a></li>
+        <li class=""><a href="!#empresa-estabelecimentos" data-toggle="tab" aria-expanded="false">Estabelecimentos da Empresa</a></li>
+        <li class=""><a href="!#empresa-socios" data-toggle="tab" aria-expanded="false">Sócios da Empresa</a></li>
+    </ul>
+    <div class="tab-content container">
+        <div class="tab-pane active" id="empresa-atividades">
+            <div ng-include src="'views/collectiveEntity/_empresa_atividades.html'"></div>
+        </div>
+        <div class="tab-pane" id="empresa-estabelecimentos">
+            <div ng-include src="'views/collectiveEntity/_empresa_estabelecimentos.html'"></div>
+        </div>
+        <div class="tab-pane" id="empresa-socios">
+            <div ng-include src="'views/collectiveEntity/_empresa_socios.html'"></div>
+        </div>
+    </div>
+</div>
+

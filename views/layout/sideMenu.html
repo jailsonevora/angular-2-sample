@@ -1,0 +1,60 @@
+<div class="left side-menu">
+    <div class="slimScrollDiv">
+        <div class="sidebar-inner slimscrollleft">
+            <div class="text-center logo">
+                <a href="#!index" class="logo"><span>SGE</span>Admin</a>
+                <a href="#!index" class="logo-sm"><span>W</span></a>
+            </div>
+            <div class="user-details">
+                <div class="text-center">
+                    <img src="assets/img/user-profile.png" alt="profile-icon">
+                </div>
+                <div class="user-info">
+                    <div class="dropdown">
+                        <!--{{profileSelected}}-->
+                        <!--{{appContext}}-->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Perfil: {{profileSelected[2]?(profileSelected[2]|translate)+' '+profiles[profileSelected[0]][profileSelected[2]][profileSelected[1]]:profileSelected[2]}}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" ng-click="account()" target="_blank"> Profile</a></li>
+                            <li><a href=""> Settings</a></li><li><a href=""> Lock screen</a></li>
+                            <li class="divider"></li><li><a href="" ng-click="logout()"> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <i class="ti-angle-right btn-profile"></i>
+            </div>
+            <div id="sidebar-menu">
+                <ul ng-repeat="(km, menu) in menus" ng-show="profileSelected[2]==km">
+                    <li class="has_sub menu" ng-repeat="(k, m) in menu" ng-show="profileSelected[1]!=null?profileSelected[1]==k:true">
+                        <div ng-repeat="(kk,n) in m">
+
+                            <div ng-if="generic.utils.isArray(n)">
+                                <a href class="waves-effect">
+                                    <i class="mdi mdi-album"></i><span>{{kk}}</span><span class="pull-right"><i class="mdi mdi-plus"></i></span>
+                                </a>
+                                <ul class="list-unstyled">
+                                    <li ng-repeat="z in n">
+                                        <a href="#!{{z.link}}">{{z.title}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div ng-if="!generic.utils.isArray(n)">
+                                <a  href="#!{{n}}" class="waves-effect">
+                                    <i class="mdi mdi-album"></i><span>{{kk}}</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="slimScrollBar"></div>
+        <div class="slimScrollRail"></div>
+    </div>
+</div>

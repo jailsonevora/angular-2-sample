@@ -1,0 +1,147 @@
+html {
+    overflow: initial !important
+}
+
+.tab-content {
+    
+    padding: 40px 15px !important;;
+}
+
+.tab-content label {color: #333}
+.left.side-menu {z-index: 1001}
+/*.topbar .topbar-left {z-index: 1001}*/
+.left.side-menu .user-details i {font-size: 38px}
+.left.side-menu .user-details {background: #eee; position: relative; cursor: pointer}
+.left.side-menu .user-details:hover .btn-profile {
+    animation-name: slideIn;
+    animation-duration: .25s;
+    right: 0;
+    display: inline-block
+}
+.left.side-menu .user-details .btn-profile {
+    padding: 40px 4px;
+    border-radius: 4px 0 0 4px;
+    background: #ccc;
+    position: absolute;
+    right: -30px;
+    top: 17px;
+    font-size: 15px;
+    box-shadow: 0 0 3px #333;
+    display: none;
+}
+
+.user-details .btn-profile:hover {
+    background: #bbb !important
+}
+.user-details .btn-profile:active {
+    background: #aaa !important
+}
+@keyframes slideIn {
+    from {right: -30px;}
+    to {right: 0;}
+}
+
+.btn-profile.active {
+    right: 0 !important;
+    display: inline-block !important;
+    animation: none !important
+}
+
+.overlay {
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: none;
+}
+.profile-menu {
+    background: white;
+    height: 400px;
+    padding: 50px;
+    /*width: 400px;*/
+    /*width: 100%;*/
+    position: fixed;
+    top: 0;
+    left: -160px;
+    z-index: 1000;
+    /*display: none;*/
+    border-left: 1px solid #eee;
+}
+.profile-menu a {
+    color: #555;
+    display: block;
+    padding: 0 10px 20px 0
+}
+
+.topbar {
+     left: 0; 
+     position: relative; 
+     right: 0; 
+     width: 100%; 
+}
+body.fixed-left .side-menu.left {top:0; overflow: hidden}
+.content-page .content {margin-top: 0}
+.profile-menu .ti-close {cursor:pointer}
+/*.profile-menu .ti-close:hover {font-weight: bold}*/
+.tab-inside-tab {margin-top: 30px !important}
+.table .action-icons a {
+    margin-right: 5px;
+    font-size: 15px
+}
+
+.select-modal ul.pagination {margin-top:0 !important}
+.well .page-header {margin-top:20px}
+.well .page-header:first-child {margin-top:0}
+/*.search-filters {margin-top: 20px}*/
+.search-el div {padding: 0}
+.search-el input {height: 34px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-color: rgba(42, 50, 60, 0.2); border-right: 0}
+.search-el a {border-top-left-radius: 0; border-bottom-left-radius: 0;}
+.search-el {padding-right:0}
+.pagination {margin: 0 !important}
+
+.btn-form {padding: 10px 30px}
+
+.breadcrumb a {color: #ffdab5}
+.breadcrumb a:hover {color: #ffe9d3}
+.breadcrumb li:before {color: #ffdab5 !important}
+.breadcrumb span {color: #ddd}
+
+#compare-modal .panel-body {padding: 0}
+#compare-modal .form-control[disabled],
+#compare-modal .form-control[readonly],
+#compare-modal fieldset[disabled] .form-control {
+    background-color: #f7f7f7;
+    border: 0;
+}
+#compare-modal compare.left .diff {
+    background-color: #f3dfdf;
+}
+#compare-modal compare.right .diff {
+    background-color: #d1eac2;
+}
+table th {
+    cursor: pointer;
+}
+table th:hover i,
+table th .fa-sort-amount-asc,
+table th .fa-sort-amount-desc {
+    color: #de5022;
+}
+table th .fa-sort {
+    color: #ccc
+}
+.required-true label,
+.required-true p {color: red}
+/*.required-true input {box-shadow: 0 0 5px red}*/
+
+.profile-menu h5.page-header {
+    /*margin-top: 20px*/
+}
+.profile-menu ul {list-style: none; padding-left: 0}
+.profile-wrapper div {margin-right: 10px}
+.profile-wrapper div:last-child {margin-right: 0}
+.profile-menu a {padding: 5px 10px; border-radius: 3px}
+.profile-menu a:hover,
+.profile-menu a.selected {background: #eee}

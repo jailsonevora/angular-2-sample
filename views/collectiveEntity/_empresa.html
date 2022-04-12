@@ -1,0 +1,147 @@
+<div class="form-group col-sm-6 required-{{entityForm.sector.$invalid}}">
+    <label>Setor de Atividade Económica</label>
+    <input name="sector" type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="economicSectorModal()" ng-model="display.entity.sector">
+    <div class="help-block" ng-messages="entityForm.sector.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.situacaoEmpresa.$invalid}}">
+    <label>Situação</label>
+    <select name="situacaoEmpresa" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.situacaoEmpresa">
+        <option ng-value="{{v.id}}" ng-repeat="v in companyCondition">{{v.designacao}}</option>
+    </select>
+    <div class="help-block" ng-messages="entityForm.situacaoEmpresa.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.dataCostituicao.$invalid}}">
+    <label>Data de Constituição</label>
+    <input name="dataCostituicao" type="text" class="datepicker form-control" ng-required="$parent.appContext!='uni'" placeholder="yyyy-mm-dd" ng-model="display.entity.dataCostituicao"
+           ng-change="entity.dataCostituicao = $parent.date(display.entity.dataCostituicao, 'yyyy-mm-dd')">
+    <div class="help-block" ng-messages="entityForm.dataCostituicao.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.volume_vendas.$invalid}}">
+    <label>Volume de Vendas</label>
+    <input name="volume_vendas" type="number" class="form-control" ng-maxlength="14" placeholder="" ng-model="entity.volume_vendas">
+    <div class="help-block" ng-messages="entityForm.volume_vendas.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.actiComercial.$invalid}}">
+    <label>Atividade Comercial</label>
+    <input name="actiComercial" type="text" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-focus="commercialActivityModal()" ng-model="display.entity.actiComercial">
+    <div class="help-block" ng-messages="entityForm.actiComercial.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.contabilidade.$invalid}}">
+    <label>Contabilidade Empresa</label>
+    <select name="contabilidade" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.contabilidade">
+        <option ng-value="{{v.id}}" ng-repeat="v in accounting">{{v.cntaDsg}}</option>
+    </select>
+    <div class="help-block" ng-messages="entityForm.contabilidade.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-6 required-{{entityForm.formaJuridica.$invalid}}">
+    <label>Forma Jurídica</label>
+    <select name="formaJuridica" class="form-control" ng-required="$parent.appContext!='uni'" ng-model="entity.formaJuridica">
+        <option ng-value="{{v.id}}" ng-repeat="v in legalForm">{{v.formaJuridica}}</option>
+    </select>
+    <div class="help-block" ng-messages="entityForm.formaJuridica.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+
+<div class="form-group col-sm-3 required-{{entityForm.numEstabelecimentos.$invalid}}">
+    <label>Nº de Estabelecimentos</label>
+    <input name="numEstabelecimentos" type="number" class="form-control" ng-required="$parent.appContext!='uni'" placeholder="" ng-model="entity.numEstabelecimentos">
+    <div class="help-block" ng-messages="entityForm.numEstabelecimentos.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+<div class="form-group col-sm-3 required-{{entityForm.capitalSocial.$invalid}}">
+    <label>Capital Social</label>
+    <input name="capitalSocial" type="number" class="form-control" ng-maxlength="12" placeholder="" ng-model="entity.capitalSocial">
+    <div class="help-block" ng-messages="entityForm.capitalSocial.$error">
+        <div ng-messages-include="views/layout/messages.html"></div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Nº de Pessoas ao Serviço</b></small></h3>
+
+    <div class="form-group col-sm-4 required-{{entityForm.numFuncionario.$invalid}}">
+        <label>Total</label>
+        <input name="numFuncionario" type="number" disabled class="form-control" ng-required="$parent.appContext!='uni'" ng-maxlength="5" placeholder="" ng-model="entity.numFuncionario">
+        <div class="help-block" ng-messages="entityForm.numFuncionario.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group col-sm-4 required-{{entityForm.numFuncionarioHomem.$invalid}}">
+        <label>Homens</label>
+        <input name="numFuncionarioHomem" type="number" class="form-control" ng-required="$parent.appContext!='uni'" ng-maxlength="5" placeholder="" ng-model="entity.numFuncionarioHomem">
+        <div class="help-block" ng-messages="entityForm.numFuncionarioHomem.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group col-sm-4 required-{{entityForm.numFuncionarioMulher.$invalid}}">
+        <label>Mulheres</label>
+        <input name="numFuncionarioMulher" type="number" class="form-control" ng-required="$parent.appContext!='uni'" ng-maxlength="5" placeholder="" ng-model="entity.numFuncionarioMulher">
+        <div class="help-block" ng-messages="entityForm.numFuncionarioMulher.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <h3 class="page-header col-sm-12"><small class="text-info"><b>Repartição de Capital</b></small></h3>
+
+    <div class="form-group col-sm-4 required-{{entityForm.capPublico.$invalid}}">
+        <label>Público</label>
+        <input name="capPublico" type="number" class="form-control" placeholder="" ng-model="entity.capPublico" ng-maxlength="3">
+        <div class="help-block" ng-messages="entityForm.capPublico.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group col-sm-4 required-{{entityForm.capPrivado.$invalid}}">
+        <label>Privado</label>
+        <input name="capPrivado" type="number" class="form-control" placeholder="" ng-model="entity.capPrivado" ng-maxlength="3">
+        <div class="help-block" ng-messages="entityForm.capPrivado.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group col-sm-4 required-{{entityForm.capEstrang.$invalid}}">
+        <label>Estrangeiro</label>
+        <input name="capEstrang" type="number" class="form-control" placeholder="" ng-model="entity.capEstrang" ng-maxlength="3">
+        <div class="help-block" ng-messages="entityForm.capEstrang.$error">
+            <div ng-messages-include="views/layout/messages.html"></div>
+        </div>
+    </div>
+</div>
+
+<div class="tab-inside-tab col-sm-12">
+    <ul class="nav nav-tabs navtab-bg">
+        <li class="active"><a href="!#empresa-atividades" data-toggle="tab" aria-expanded="true"
+                              ng-click="tab.subtab = 'companyActivities'">Atividades da Empresa</a></li>
+        <li class=""><a href="!#empresa-estabelecimentos" data-toggle="tab" aria-expanded="false"
+                        ng-click="tab.subtab = 'commercialBuildings'">Estabelecimentos da Empresa</a></li>
+        <li class=""><a href="!#empresa-socios" data-toggle="tab" aria-expanded="false"
+                        ng-click="tab.subtab = 'businessPartners'">Sócios da Empresa</a></li>
+    </ul>
+    <div class="tab-content container">
+        <div class="tab-pane active" id="empresa-atividades">
+            <div ng-include src="'views/collectiveEntity/_empresa_atividades.html'"></div>
+        </div>
+        <div class="tab-pane" id="empresa-estabelecimentos">
+            <add-to-table models="entity.estabelecimento" add-fn="commercialBuildingFormModal()" labels="labels.commercialBuilding"
+              actions-fn="addToTable.actions"></add-to-table>
+        </div>
+        <div class="tab-pane" id="empresa-socios">
+            <add-to-table models="entity.socio" add-fn="businessPartnerFormModal()" labels="labels.businessPartner"
+              actions-fn="addToTable.actions"></add-to-table>
+        </div>
+    </div>
+</div>

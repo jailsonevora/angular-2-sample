@@ -1,0 +1,25 @@
+<div id="dialog" class="modal fade in" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{dialog.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{dialog.message}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel waves-effect" data-dismiss="modal"
+                        ng-if="dialog.btnFn.confirmation!=null && dialog.btnFn.cancelation==null">Cancelar</button>
+                <button type="button" class="btn btn-cancel waves-effect"
+                        ng-if="dialog.btnFn.cancelation!=null"
+                        ng-click="dialog.btnFn.cancelation();dialog.close()">Cancelar</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light" 
+                        ng-if="dialog.btnFn.confirmation!=null"
+                        ng-click="dialog.btnFn.confirmation()">Confirmar</button>
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"
+                        ng-if="dialog.btnFn.confirmation==null">Fechar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

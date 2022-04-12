@@ -1,0 +1,13 @@
+{
+  "realm": "inerealm",
+  "auth-server-url": "https://auth.ine.gov.ao/auth",
+  "ssl-required": "all",
+  "resource": "sge-frontend",
+  "credentials": {
+    "secret": "2eab66c2-086f-476f-ab47-2bfc85e7a8d9"
+  },
+  "confidential-port": 0,
+  "use-resource-role-mappings": false,
+  "policy-enforcer": {}
+}
+
